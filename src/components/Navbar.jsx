@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function Navbar() {
+
+function Navbar(props) {
     return (
         <div>
-            <nav className="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+            <nav className={`navbar navbar-expand-lg bg-primary border-bottom border-body`} data-bs-theme='dark'>
                 <div className="container-fluid">
-                    <a className="navbar-brand">TextUtils</a>
+                    <a className="navbar-brand">{props.title}</a>
+                </div>
+                <div className={`form-check form-switch text-light`}>
+                    <input className="form-check-input bg-secondary" type="checkbox" onClick={props.toggle} role="switch" id="flexSwitchCheckDefault"/>
+                    <label className="form-check-label px-2" htmlFor="flexSwitchCheckDefault">{props.modeName}</label>
                 </div>
             </nav>
         </div>

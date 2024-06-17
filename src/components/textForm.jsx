@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
-function TextForm() {
-  const [inputValue, setInputValue] = useState('');
+
+
+function TextForm(props) {
+  const [inputValue, setInputValue] = useState('Enter Your Text');
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -20,14 +23,15 @@ function TextForm() {
   }
   return (
     <div>
-      <div className='d-flex flex-column my-4 align-items-center'>
-        <label for="exampleFormControlTextarea1" className="form-label">Enter Your Text Here</label>
-        <textarea className='w-75 form-control mb-3 border-primary'
+      <div className={`d-flex flex-column my-4 align-items-center`} style={{color: props.text}}>
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">Enter Your Text Here</label>
+        <textarea className={`w-75 form-control mb-3 border-primary`}
           type="text"
-          placeholder="Enter something"
+          // placeholder="Enter something"
           value={inputValue}
           onChange={handleChange}
           rows={15}
+          style={{backgroundColor: props.mode==='light'?'black':'white', color: props.text}}
         />
         <div className='flex-wrap align-items-center w-70'>
           <button className='btn btn-primary me-2 mb-2' onClick={() => { formatText("upper") }}>Uppercase</button>
