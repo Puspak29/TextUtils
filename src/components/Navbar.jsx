@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
 function Navbar(props) {
@@ -7,7 +7,7 @@ function Navbar(props) {
         <div>
             <nav className={`navbar navbar-expand-lg bg-primary border-bottom border-body`} data-bs-theme='dark'>
                 <div className="container-fluid">
-                    <a className="navbar-brand">{props.title}</a>
+                    <h4 style={{color: 'white'}}>{props.title}</h4>
                 </div>
                 <div className={`form-check form-switch text-light`}>
                     <input className="form-check-input bg-secondary" type="checkbox" onClick={props.toggle} role="switch" id="flexSwitchCheckDefault"/>

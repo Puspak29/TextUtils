@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 
 
 function TextForm(props) {
   const [inputValue, setInputValue] = useState('Enter Your Text');
+
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -19,6 +20,9 @@ function TextForm(props) {
         return ""
       else if (type === "exSpaces")
         return prev.trim().replace(/\s+/g, ' ')
+      else if (type==="copy"){
+        window.navigator.clipboard.writeText(inputValue)
+      }
     })
   }
   return (
@@ -37,6 +41,7 @@ function TextForm(props) {
           <button className='btn btn-primary me-2 mb-2' onClick={() => { formatText("upper") }}>Uppercase</button>
           <button className='btn btn-primary me-2 mb-2' onClick={() => { formatText("lower") }}>Lowercase</button>
           <button className='btn btn-primary me-2 mb-2' onClick={() => { formatText("clear") }}>Clear text</button>
+          <button className='btn btn-primary me-2 mb-2' onClick={() => { formatText("copy") }}>Copy Text</button>
           <button className='btn btn-primary me-2 mb-2' onClick={() => { formatText("exSpaces") }}>Remove Extra Spaces</button>
         </div>
       </div>
