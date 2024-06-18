@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 // import PropTypes from 'prop-types'
 
 
 
 function TextForm(props) {
   const [inputValue, setInputValue] = useState('Enter Your Text');
-
+  const copyRef= useRef(null)
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -21,6 +21,7 @@ function TextForm(props) {
       else if (type === "exSpaces")
         return prev.trim().replace(/\s+/g, ' ')
       else if (type==="copy"){
+        copyRef.current?.select()
         window.navigator.clipboard.writeText(inputValue)
       }
     })
@@ -36,6 +37,7 @@ function TextForm(props) {
           onChange={handleChange}
           rows={15}
           style={{backgroundColor: props.mode==='light'?'black':'white', color: props.text}}
+          ref={copyRef}
         />
         <div className='flex-wrap align-items-center w-70'>
           <button className='btn btn-primary me-2 mb-2' onClick={() => { formatText("upper") }}>Uppercase</button>
